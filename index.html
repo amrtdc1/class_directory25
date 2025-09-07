@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Directory</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <meta name="theme-color" content="#000000">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Password Gate -->
+  <div id="gate" class="gate" hidden>
+    <div class="gate-card">
+      <h2>Enter Password</h2>
+      <p class="hint">This directory is protected with a simple password.</p>
+      <input id="pwd" type="password" placeholder="Password" autocomplete="current-password"
+             style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;background:var(--bg);color:var(--fg);">
+      <div style="height:10px"></div>
+      <button id="unlock" class="primary" style="width:100%">Unlock</button>
+      <div class="error" 
+
+…">
+      <button id="logout" title="Clear password for this session">Logout</button>
+    </div>
+    <div class="count"><span id="count">0</span> people</div>
+  </header>
+
+  <!-- Directory List -->
+  <main id="list" aria-live="polite"></main>
+
+  <!-- A–Z quick navigation -->
+  <nav class="az-bar" aria-label="A–Z quick nav" id="az"></nav>
+
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
